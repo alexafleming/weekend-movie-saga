@@ -6,7 +6,6 @@ router.get('/:id', (req, res) => {
   const query = `SELECT * FROM movies_genres
   JOIN genres ON movies_genres.genre_id = genres.id
   WHERE movies_genres.movie_id = $1`;
-  console.log("TESTING");
   pool.query(query, [req.params.id])
     .then( result => {
       res.send(result.rows);
