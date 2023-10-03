@@ -14,20 +14,35 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
+    yield takeEvery('FETCH_DETAILS', fetchDetails);
 }
 
+//Get all movies reducer
 function* fetchAllMovies() {
     // get all movies from the DB
     try {
         const movies = yield axios.get('/api/movie');
         console.log('get all:', movies.data);
         yield put({ type: 'SET_MOVIES', payload: movies.data });
+    } catch {
+        console.log('get all error');
+    }  
+}
+
+//details reducer
+function* fetchDetails(action) {
+    console.log(action);
+    // get all details from the DB
+    try {
+        const movies = yield axios.get(`/api/movie/${action.payload}`);
+        console.log('get details:', movies.data);
+        //yield put({ type: 'SET_MOVIES', payload: movies.data });
 
     } catch {
         console.log('get all error');
-    }
-        
+    }  
 }
+
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();

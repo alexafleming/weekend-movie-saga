@@ -5,8 +5,12 @@ import { useParams } from 'react-router-dom';
 
 function Details() {
     const { id } = useParams();
-  
-  
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        dispatch({type: 'FETCH_DETAILS', payload: id })
+    });
+
     return (
       <div>
         <h2>Details</h2>
