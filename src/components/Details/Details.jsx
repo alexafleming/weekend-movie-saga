@@ -6,15 +6,18 @@ import { useParams } from 'react-router-dom';
 function Details() {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const movie = useSelector(store => store.movieDetail)
     
     useEffect(() => {
         dispatch({type: 'FETCH_DETAILS', payload: id })
-    });
+    }, []);
 
     return (
       <div>
         <h2>Details</h2>
-        <p>Movie ID: {id}</p>
+        <p>{movie.title}</p>
+        <img src={movie.poster}/>
+        <p>{movie.description}</p>
       </div>
     );
   }
