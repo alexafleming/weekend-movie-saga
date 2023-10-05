@@ -1,4 +1,21 @@
 .movies {
-    display : flex;
-    flex-wrap: wrap;
-}
+    padding: 20px;
+  }
+  
+  .movie-card {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-image {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+
