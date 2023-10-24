@@ -27,7 +27,7 @@ function* fetchAllMovies() {
         yield put({ type: 'SET_MOVIES', payload: movies.data });
     } catch {
         console.log('get all error');
-    }  
+    }
 }
 
 //details saga
@@ -39,7 +39,7 @@ function* fetchDetails(action) {
         yield put({ type: 'SET_MOVIE_DETAIL', payload: movies.data[0] });
     } catch {
         console.log('get all error');
-    }  
+    }
 }
 
 function* fetchGenres(action) {
@@ -47,10 +47,10 @@ function* fetchGenres(action) {
     try {
         const genres = yield axios.get(`/api/genre/${action.payload}`);
         console.log('get genres:', genres.data);
-        yield put({ type: 'SET_MOVIE_GENRES', payload: genres.data});
+        yield put({ type: 'SET_MOVIE_GENRES', payload: genres.data });
     } catch {
         console.log('get all error');
-    }  
+    }
 }
 
 // Create sagaMiddleware
